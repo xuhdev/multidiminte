@@ -1,0 +1,22 @@
+; This file is for unifying the coding style for different editors and IDEs.
+; More information at http://EditorConfig.org
+
+root = true
+
+[*.c]
+charset = utf-8
+indent_style = space
+indent_size = 4
+max_line_length = 120
+
+[*.h]
+charset = utf-8
+indent_style = space
+indent_size = 4
+max_line_length = 120
+
+[*.md]
+charset = utf-8
+indent_style = space
+indent_size = 2
+max_line_length = 120
