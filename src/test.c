@@ -50,7 +50,7 @@ static void test_1(void)
     printf("result: %e\n", gmdi_handle_get_result(handle));
     printf("abserr: %e\n", gmdi_handle_get_abserr(handle));
 
-    gmdi_destroy_inte_handle(handle);
+    gmdi_free_inte_handle(handle);
 }
 
 static void test_2(void)
@@ -92,7 +92,7 @@ static void test_2(void)
     printf("result: %e\n", gmdi_handle_get_result(handle));
     printf("abserr: %e\n", gmdi_handle_get_abserr(handle));
 
-    gmdi_destroy_inte_handle(handle);
+    gmdi_free_inte_handle(handle);
 }
 
 int main(int argc, const char *argv[])

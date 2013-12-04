@@ -21,7 +21,7 @@ gmdi_inte_handle gmdi_create_inte_handle(size_t n)
 /*
  * Destroy gmdi_inte_handle
  */
-void gmdi_destroy_inte_handle(gmdi_inte_handle * handle)
+void gmdi_free_inte_handle(gmdi_inte_handle * handle)
 {
     free(((gmdi_multi_dim_inte_param * )handle)->oip);
 

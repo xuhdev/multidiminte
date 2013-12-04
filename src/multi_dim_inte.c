@@ -1,3 +1,29 @@
+/*
+ * This is the file which does the integration.
+ *
+ * The integration form is as following:
+ *
+ * \int_{x^{(0)}_0} ^{x^{(0)}_1} f_0(x^{(0)}) dx^{(0)} \int_{x^{(1)}_0} ^{x^{(1)}_1} f_1(x^{(0)}, x^{(1)})\cdots \int_{x^{(n-1)}_0} ^{x^{(n-1)}_1} f_{n-1} dx^{(n-1)}
+ *
+ * A recursive technique is used. big_g is always be the integration kernel. call_integration_func will set the limit
+ * and call the integration function to integrate big_g. big_g will call call_integration_func for the inner level of
+ * the integration. big_g will stop calling call_integration_func once the most inner level of integration is reached.
+ * The recursive procedure is:
+ *
+ * call_integration_func --> integrate big_g --> call_integration_func in big_g --> ... 
+ *
+ * For example, for the zeroth dimension, big_g is 
+ *
+ * f_0(x^{(0)}) dx^{(0)} \int_{x^{(1)}_0} ^{x^{(1)}_1} f_1(x^{(0)}, x^{(1)})\cdots \int_{x^{(n-1)}_0} ^{x^{(n-1)}_1} f_{n-1} dx^{(n-1)}.
+ *
+ * which is integrated by the first call of call_integration_func. In this big_g, it first calls call_integration_func
+ * to evaluate
+ *
+ * \int_{x^{(1)}_0} ^{x^{(1)}_1} f_1(x^{(0)}, x^{(1)})\cdots \int_{x^{(n-1)}_0} ^{x^{(n-1)}_1} f_{n-1} dx^{(n-1)}.
+ *
+ * Remember call_integration_func evaluates recursively. Then it evaluates f_0, and multiply them.
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <gsl/gsl_integration.h>
@@ -7,6 +33,9 @@
 #define CALL_GSL_FUNCTION(gf, x)                    gf.function((x), gf.params)
 #define CALL_GMDI_MULTI_VAR_FUNCTION(gmvf, x)       gmvf.function((x), gmvf.n, gmvf.params)
 
+/*
+ * Evaluate gmdi_function_or_constant according to their type.
+ */
 static double call_gmdi_function_or_constant(gmdi_function_or_constant * gfc, const double * x)
 {
     switch (gfc->type)
@@ -62,6 +91,9 @@ static int call_integration_func(gmdi_multi_dim_inte_param* params)
     return ret;
 }
 
+/*
+ * The big_g function. See the comments at the top.
+ */
 static double big_g(double x, void * p)
 {
     double                              result = 1.0;
@@ -88,6 +120,9 @@ static double big_g(double x, void * p)
     return result;
 }
 
+/*
+ * Start the integration.
+ */
 int gmdi_multi_dimensional_integration(gmdi_inte_handle handle)
 {
     int                                         ret, i;

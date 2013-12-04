@@ -5,6 +5,13 @@
 #include <gsl/gsl_integration.h>
 #include "gmdi.h"
 
+/* The integration form is as following:
+ *
+ * \int_{x^{(0)}_0} ^{x^{(0)}_1} f_0(x^{(0)}) dx^{(0)} \int_{x^{(1)}_0} ^{x^{(1)}_1} f_1(x^{(0)}, x^{(1)})\cdots \int_{x^{(n-1)}_0} ^{x^{(n-1)}_1} f_{n-1} dx^{(n-1)}
+ *
+ * gmdi_multi_dim_inte_param::oip[i] corresponds to the dimension of x^{(i)}.
+ */
+
 /* The param of one integral */
 typedef struct struct_gmdi_one_inte_param
 {
@@ -20,7 +27,7 @@ typedef struct struct_gmdi_one_inte_param
     /* used internally. */
     struct
     {
-        gsl_integration_workspace *         giw;
+        gsl_integration_workspace *         giw;    /* integration workspace for this dimension */
     } intern;
 
 } gmdi_one_inte_param;
@@ -29,7 +36,7 @@ typedef struct struct_gmdi_multi_dim_inte_param
 {
     size_t                              n; /* integral dimension */
 
-    gmdi_one_inte_param *               oip;
+    gmdi_one_inte_param *               oip;    /* the array of the parameters for each dimension. */
 
     /* output result */
     double                              result;
@@ -41,8 +48,8 @@ typedef struct struct_gmdi_multi_dim_inte_param
     {
         size_t                              dim;            /* which dim are we working on now? */
         double*                             x;              /* Value of the high dimensional x */
-        double*                             results;
-        double*                             abserrs;
+        double*                             results;        /* Results of each dimension. It's not the final output. */
+        double*                             abserrs;        /* Abserrs of each dimension. It's not the final output. */
     } intern;
 } gmdi_multi_dim_inte_param;
 
