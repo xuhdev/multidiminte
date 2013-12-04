@@ -45,7 +45,7 @@ gmdi_inte_handle gmdi_create_inte_handle(size_t n);
 
 /* Free the handle */
 void gmdi_free_inte_handle(gmdi_inte_handle * handle);
-/
+
 /* Do the integration */
 int gmdi_multi_dimensional_integration(gmdi_inte_handle handle);
 
