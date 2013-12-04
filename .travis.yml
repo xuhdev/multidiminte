@@ -1,0 +1,9 @@
+language: c
+
+install: sudo apt-get install libgsl0-dev
+
+compiler:
+  - clang
+  - gcc
+
+script: cmake . && make && ./src/test
