@@ -13,11 +13,16 @@ static double test_2_x1(const double* x, size_t n, void * p)
     return *x;
 }
 
-static void test_1(void)
+/*
+ * \int_0^2 dy \int_0^1 dx x^2
+ */
+static int test_1(void)
 {
     gmdi_inte_handle            handle = gmdi_create_inte_handle(2);
     gmdi_function_or_constant   fc;
     gmdi_multi_var_function     mvf;
+    double                      result;
+    int                         ret = 0;
 
     gmdi_handle_set_key(handle, GSL_INTEG_GAUSS61, 0);
     gmdi_handle_set_key(handle, GSL_INTEG_GAUSS61, 1);
@@ -47,17 +52,34 @@ static void test_1(void)
     gmdi_handle_set_kernel(handle, &mvf);
 
     gmdi_multi_dimensional_integration(handle);
+    puts("test_1: \\int_0^2 dy \\int_0^1 dx x^2");
     printf("result: %e\n", gmdi_handle_get_result(handle));
     printf("abserr: %e\n", gmdi_handle_get_abserr(handle));
 
+    if (abs(gmdi_handle_get_result(handle) - 1.0/3) >= 1e-7)
+    {
+        puts("Test failed");
+        ret = 1;
+    }
+    else
+        puts("Test passed");
+
+    puts("");
+
     gmdi_free_inte_handle(handle);
+
+    return ret;
 }
 
-static void test_2(void)
+/*
+ * \int_0^2 dy \int_0^y dx x^2
+ */
+static int test_2(void)
 {
     gmdi_inte_handle            handle = gmdi_create_inte_handle(2);
     gmdi_function_or_constant   fc;
     gmdi_multi_var_function     mvf;
+    int                         ret = 0;
 
     gmdi_handle_set_key(handle, GSL_INTEG_GAUSS61, 0);
     gmdi_handle_set_key(handle, GSL_INTEG_GAUSS61, 1);
@@ -89,16 +111,27 @@ static void test_2(void)
     gmdi_handle_set_kernel(handle, &mvf);
 
     gmdi_multi_dimensional_integration(handle);
+
+    printf("Test 2: \\int_0^2 dy \\int_0^y dx x^2\n");
     printf("result: %e\n", gmdi_handle_get_result(handle));
     printf("abserr: %e\n", gmdi_handle_get_abserr(handle));
 
+    if (abs(gmdi_handle_get_result(handle) - 4.0/3) >= 1e-7)
+    {
+        puts("Test failed");
+        ret = 1;
+    }
+    else
+        puts("Test passed");
+
+    puts("");
+
     gmdi_free_inte_handle(handle);
+
+    return ret;
 }
 
 int main(int argc, const char *argv[])
 {
-    test_1();
-    test_2();
-
-    return 0;
+    return test_1() || test_2();
 }
