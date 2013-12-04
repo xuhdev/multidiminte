@@ -30,8 +30,8 @@ install (TARGETS multidiminte_shared multidiminte_static
 install (FILES gmdi.h DESTINATION include/gmdi)
 
 # testing executable
-link_directories(${CMAKE_LIBRARY_OUTPUT_DIR})
+link_directories (${CMAKE_CURRENT_BINARY_DIR})
 add_executable (test test.c)
-target_link_libraries(test multidiminte)
-add_dependencies(test multidiminte_shared)
-set_target_properties(test PROPERTIES OUTPUT_NAME test)
+target_link_libraries (test multidiminte)
+add_dependencies (test multidiminte_shared)
+set_target_properties (test PROPERTIES OUTPUT_NAME test)
