@@ -7,4 +7,5 @@ set (multidiminte_VERSION_SUBMINOR 0)
 
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMake_Modules")
 
-add_subdirectory(src)
+add_subdirectory (src)
+add_subdirectory (doc)
