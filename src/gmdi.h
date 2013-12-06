@@ -10,8 +10,8 @@
  */
 typedef enum
 {
-    GMDI_INTE_FUNCTIONS_QNG = 1, /*!< gsl_integration_qng */
-    GMDI_INTE_FUNCTIONS_QAG, /*!< gsl_integration_qag */
+    GMDI_INTE_FUNCTIONS_QNG = 1, /*!< [gsl_integration_qng](http://www.gnu.org/software/gsl/manual/html_node/QNG-non_002dadaptive-Gauss_002dKronrod-integration.html) */
+    GMDI_INTE_FUNCTIONS_QAG, /*!< [gsl_integration_qag](http://www.gnu.org/software/gsl/manual/html_node/QAG-adaptive-integration.html#QAG-adaptive-integration) */
 } GMDI_INTE_FUNCTIONS;
 
 /*!
@@ -77,7 +77,7 @@ void gmdi_free_inte_handle(gmdi_inte_handle * handle);
  *
  * \param handle The handle of which we need to perform integration.
  *
- * \return The error code the integration. GSL_SUCCESS is returned if no error occurs.
+ * \return The error code the integration. `GSL_SUCCESS` is returned if no error occurs.
  */
 int gmdi_multi_dimensional_integration(gmdi_inte_handle handle);
 
@@ -86,7 +86,7 @@ int gmdi_multi_dimensional_integration(gmdi_inte_handle handle);
  *
  * \param handle The handle of the integration.
  *
- * \param key The value of the key to set, e.g. GSL_INTEG_GAUSS61, etc.
+ * \param key The value of the key to set, e.g. `GSL_INTEG_GAUSS61`, etc.
  *
  * \param n The dimension of the integration which this setting applies to.
  *
