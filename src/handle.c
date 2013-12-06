@@ -58,9 +58,27 @@ void gmdi_handle_set_x0(gmdi_inte_handle handle, const gmdi_function_or_constant
     ((gmdi_multi_dim_inte_param *) handle)->oip[n].x0 = *x0;
 }
 
+void gmdi_handle_set_x0_constant(gmdi_inte_handle handle, double x0, size_t n)
+{
+    gmdi_function_or_constant gfc;
+    gfc.type = GMDI_FUNCTION_OR_CONSTANT_TYPE_CONSTANT;
+    gfc.content.c = x0;
+
+    gmdi_handle_set_x0(handle, &gfc, n);
+}
+
 void gmdi_handle_set_x1(gmdi_inte_handle handle, const gmdi_function_or_constant * x1, size_t n)
 {
     ((gmdi_multi_dim_inte_param *) handle)->oip[n].x1 = *x1;
+}
+
+void gmdi_handle_set_x1_constant(gmdi_inte_handle handle, double x1, size_t n)
+{
+    gmdi_function_or_constant gfc;
+    gfc.type = GMDI_FUNCTION_OR_CONSTANT_TYPE_CONSTANT;
+    gfc.content.c = x1;
+
+    gmdi_handle_set_x1(handle, &gfc, n);
 }
 
 void gmdi_handle_set_f(gmdi_inte_handle handle, const gmdi_multi_var_function * f, size_t n)

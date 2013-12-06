@@ -67,8 +67,14 @@ void gmdi_handle_set_inte_func(gmdi_inte_handle handle, GMDI_INTE_FUNCTIONS inte
 /* Set the x0 of the integration of the nth dimension */
 void gmdi_handle_set_x0(gmdi_inte_handle handle, const gmdi_function_or_constant * x0, size_t n);
 
+/* Set the x0 of the integration of the nth dimension as a constant */
+void gmdi_handle_set_x0_constant(gmdi_inte_handle handle, double x0, size_t n);
+
 /* Set the x1 of the integration of the nth dimension */
 void gmdi_handle_set_x1(gmdi_inte_handle handle, const gmdi_function_or_constant * x1, size_t n);
+
+/* Set the x1 of the integration of the nth dimension as a constant */
+void gmdi_handle_set_x1_constant(gmdi_inte_handle handle, double x1, size_t n);
 
 /* Set the f of the integration of the nth dimension */
 void gmdi_handle_set_f(gmdi_inte_handle handle, const gmdi_multi_var_function * f, size_t n);
