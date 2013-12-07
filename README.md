@@ -1,4 +1,4 @@
-MultiDimInte                                                                                             {#mainpage}
+MultiDimInte
 ============
 
 MultiDimInte is a library which does multi-dimensional numerical integral by applying GSL one-dimensional integration
