@@ -13,6 +13,7 @@ if (DOXYGEN_FOUND)
         ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in
         DEPENDS
         ${PROJECT_SOURCE_DIR}/src/gmdi.h
+        ${PROJECT_SOURCE_DIR}/README.md
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
     add_custom_target(doc ALL DEPENDS
