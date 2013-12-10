@@ -2,6 +2,7 @@ var searchData=
 [
   ['gmdi_5fcreate_5finte_5fhandle',['gmdi_create_inte_handle',['../gmdi_8h.html#a5b3b833ddea9824e888cdbc67323271e',1,'gmdi.h']]],
   ['gmdi_5ffree_5finte_5fhandle',['gmdi_free_inte_handle',['../gmdi_8h.html#a685f55ceaa32bfac93851e88ac4b7b6d',1,'gmdi.h']]],
+  ['gmdi_5fget_5fversion',['gmdi_get_version',['../gmdi_8h.html#a1636db35cd101029722af46eac43de81',1,'gmdi.h']]],
   ['gmdi_5fhandle_5fget_5fabserr',['gmdi_handle_get_abserr',['../gmdi_8h.html#abf8726dfa00725975dc3fe70e1286cbc',1,'gmdi.h']]],
   ['gmdi_5fhandle_5fget_5fresult',['gmdi_handle_get_result',['../gmdi_8h.html#af1161e38eec46c86b7dc8fd458193868',1,'gmdi.h']]],
   ['gmdi_5fhandle_5fset_5fepsabs',['gmdi_handle_set_epsabs',['../gmdi_8h.html#abb1b107c91fc6bb900cac9d4b424783b',1,'gmdi.h']]],

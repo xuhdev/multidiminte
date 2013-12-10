@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p>MultiDimInte is a library which does multi-dimensional numerical integral by applying GSL one-dimensional integration function repeatedly. No special trick is used in this library &ndash; this is just a convenient wrapper to write such integral easily.</p>
 <p>Before you decide to use this library, I recommend you to look into <a href="http://www.feynarts.de/cuba/">Cuba</a> and <a href="http://www.gnu.org/software/gsl/manual/html_node/Monte-Carlo-Integration.html">Monte Carlo Integration in GSL</a>. If they don't work out for you, this library might be good for you.</p>
-<p>Currently this project is still under construction. Only the use of <code>gsl_integration_qag</code> function is implemented and further documentation is needed. Despite the mess here, your interest is still welcome.</p>
+<p>Currently only the use of <code>gsl_integration_qag</code> and <code>gsl_integration_qng</code> functions is implemented.</p>
 <h2>Installation</h2>
 <p>This project is based on <a href="http://www.cmake.org">cmake</a> build system. First install cmake and GSL. Then: </p>
 <pre class="fragment">cd /path/to/multidiminte
@@ -125,7 +125,7 @@ make &amp;&amp; make install
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Dec 9 2013 00:57:48 for Multidiminte by
+    <li class="footer">Generated on Mon Dec 9 2013 23:23:03 for Multidiminte by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

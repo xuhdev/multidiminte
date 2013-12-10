@@ -182,7 +182,9 @@ $(document).ready(function(){initNavTree('gmdi_8h_source.html','');});
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="keywordtype">double</span> <a class="code" href="gmdi_8h.html#abf8726dfa00725975dc3fe70e1286cbc">gmdi_handle_get_abserr</a>(<a class="code" href="gmdi_8h.html#ae955218b4400aa5786a1a23666075dec">gmdi_inte_handle</a> handle);</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* GMDI_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gmdi_8h.html#a1636db35cd101029722af46eac43de81">gmdi_get_version</a>(<span class="keywordtype">int</span> * major, <span class="keywordtype">int</span> * minor, <span class="keywordtype">int</span> * subminor);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* GMDI_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="gmdi_8h_html_aa5df112ff876da028ba814075daa5f6da57a163c9f01d63a474b77132d9182e86"><div class="ttname"><a href="gmdi_8h.html#aa5df112ff876da028ba814075daa5f6da57a163c9f01d63a474b77132d9182e86">GMDI_INTE_FUNCTIONS_QAG</a></div><div class="ttdef"><b>Definition:</b> <a href="gmdi_8h_source.html#l00014">gmdi.h:14</a></div></div>
 <div class="ttc" id="gmdi_8h_html_ae955218b4400aa5786a1a23666075dec"><div class="ttname"><a href="gmdi_8h.html#ae955218b4400aa5786a1a23666075dec">gmdi_inte_handle</a></div><div class="ttdeci">void * gmdi_inte_handle</div><div class="ttdef"><b>Definition:</b> <a href="gmdi_8h_source.html#l00055">gmdi.h:55</a></div></div>
 <div class="ttc" id="gmdi_8h_html_a787aba63075efcb0f774bbd69a81b429"><div class="ttname"><a href="gmdi_8h.html#a787aba63075efcb0f774bbd69a81b429">gmdi_handle_set_kernel</a></div><div class="ttdeci">void gmdi_handle_set_kernel(gmdi_inte_handle handle, const gmdi_multi_var_function *f)</div><div class="ttdoc">Set the main integral kernel of the integration of the nth dimension as a constant. </div></div>
@@ -215,13 +217,14 @@ $(document).ready(function(){initNavTree('gmdi_8h_source.html','');});
 <div class="ttc" id="structgmdi__function__or__constant_html_a0dc6b66d39a876750e947618e20bf7f6"><div class="ttname"><a href="structgmdi__function__or__constant.html#a0dc6b66d39a876750e947618e20bf7f6">gmdi_function_or_constant::type</a></div><div class="ttdeci">GMDI_FUNCTION_OR_CONSTANT_TYPE type</div><div class="ttdef"><b>Definition:</b> <a href="gmdi_8h_source.html#l00042">gmdi.h:42</a></div></div>
 <div class="ttc" id="gmdi_8h_html_a4dc122f9d947dafce56a39e4b51ffb29"><div class="ttname"><a href="gmdi_8h.html#a4dc122f9d947dafce56a39e4b51ffb29">gmdi_handle_set_f</a></div><div class="ttdeci">void gmdi_handle_set_f(gmdi_inte_handle handle, const gmdi_multi_var_function *f, size_t n)</div><div class="ttdoc">Set the f of the integration of the nth dimension as a constant. </div></div>
 <div class="ttc" id="structgmdi__multi__var__function_html_ad95513be8fcae11f202c4a93b4400379"><div class="ttname"><a href="structgmdi__multi__var__function.html#ad95513be8fcae11f202c4a93b4400379">gmdi_multi_var_function::n</a></div><div class="ttdeci">size_t n</div><div class="ttdef"><b>Definition:</b> <a href="gmdi_8h_source.html#l00033">gmdi.h:33</a></div></div>
+<div class="ttc" id="gmdi_8h_html_a1636db35cd101029722af46eac43de81"><div class="ttname"><a href="gmdi_8h.html#a1636db35cd101029722af46eac43de81">gmdi_get_version</a></div><div class="ttdeci">void gmdi_get_version(int *major, int *minor, int *subminor)</div><div class="ttdoc">Obtain the version number of the library currently in use. You can pass in a NULL pointer if you do n...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="gmdi_8h.html">gmdi.h</a></li>
-    <li class="footer">Generated on Mon Dec 9 2013 00:57:48 for Multidiminte by
+    <li class="footer">Generated on Mon Dec 9 2013 23:23:02 for Multidiminte by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

@@ -14,6 +14,7 @@ var gmdi_8h =
     ] ],
     [ "gmdi_create_inte_handle", "gmdi_8h.html#a5b3b833ddea9824e888cdbc67323271e", null ],
     [ "gmdi_free_inte_handle", "gmdi_8h.html#a685f55ceaa32bfac93851e88ac4b7b6d", null ],
+    [ "gmdi_get_version", "gmdi_8h.html#a1636db35cd101029722af46eac43de81", null ],
     [ "gmdi_handle_get_abserr", "gmdi_8h.html#abf8726dfa00725975dc3fe70e1286cbc", null ],
     [ "gmdi_handle_get_result", "gmdi_8h.html#af1161e38eec46c86b7dc8fd458193868", null ],
     [ "gmdi_handle_set_epsabs", "gmdi_8h.html#abb1b107c91fc6bb900cac9d4b424783b", null ],
