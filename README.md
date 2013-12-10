@@ -8,8 +8,7 @@ integral easily.
 Before you decide to use this library, I recommend you to look into [Cuba][] and [Monte Carlo Integration in
 GSL][GSLMC]. If they don't work out for you, this library might be good for you.
 
-Currently this project is still under construction. Only the use of `gsl_integration_qag` function is implemented and
-further documentation is needed. Despite the mess here, your interest is still welcome.
+Currently only the use of `gsl_integration_qag` and `gsl_integration_qng` functions is implemented.
 
 ## Installation
 

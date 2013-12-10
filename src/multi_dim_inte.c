@@ -71,6 +71,14 @@ static int call_integration_func(gmdi_multi_dim_inte_param* params)
     switch (oip->inte_func)
     {
     case GMDI_INTE_FUNCTIONS_QNG:
+        ret = gsl_integration_qng(&gf,
+                inte_limit_low,
+                inte_limit_high,
+                oip->epsabs,
+                oip->epsrel,
+                params->intern.results + params->intern.dim,
+                params->intern.abserrs + params->intern.dim,
+                &params->neval);
 
         break;
     case GMDI_INTE_FUNCTIONS_QAG:

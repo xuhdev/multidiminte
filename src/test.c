@@ -15,6 +15,8 @@ static double test_2_x1(const double* x, size_t n, void * p)
 
 /*
  * \int_0^2 dy \int_0^1 dx x^2
+ *
+ * Using gsl_integration_qag and gsl_integration_qng
  */
 static int test_1(void)
 {
@@ -51,12 +53,29 @@ static int test_1(void)
     mvf.params = NULL;
     gmdi_handle_set_kernel(handle, &mvf);
 
-    gmdi_multi_dimensional_integration(handle);
     puts("test_1: \\int_0^2 dy \\int_0^1 dx x^2");
+    puts("The result should be 2/3");
+
+    gmdi_multi_dimensional_integration(handle);
+    puts("Method: gsl_integration_qag");
     printf("result: %e\n", gmdi_handle_get_result(handle));
     printf("abserr: %e\n", gmdi_handle_get_abserr(handle));
+    if (fabs(gmdi_handle_get_result(handle) - 2.0/3) >= 1e-7)
+    {
+        puts("Test failed");
+        ret = 1;
+    }
+    else
+        puts("Test passed");
 
-    if (abs(gmdi_handle_get_result(handle) - 1.0/3) >= 1e-7)
+    gmdi_handle_set_inte_func(handle, GMDI_INTE_FUNCTIONS_QAG, 0);
+    gmdi_handle_set_inte_func(handle, GMDI_INTE_FUNCTIONS_QAG, 1);
+
+    gmdi_multi_dimensional_integration(handle);
+    puts("Method: gsl_integration_qng");
+    printf("result: %e\n", gmdi_handle_get_result(handle));
+    printf("abserr: %e\n", gmdi_handle_get_abserr(handle));
+    if (fabs(gmdi_handle_get_result(handle) - 2.0/3) >= 1e-7)
     {
         puts("Test failed");
         ret = 1;
@@ -113,10 +132,12 @@ static int test_2(void)
     gmdi_multi_dimensional_integration(handle);
 
     printf("Test 2: \\int_0^2 dy \\int_0^y dx x^2\n");
+    puts("The result should be 4/3");
+    puts("Method: gsl_integration_qag");
     printf("result: %e\n", gmdi_handle_get_result(handle));
     printf("abserr: %e\n", gmdi_handle_get_abserr(handle));
 
-    if (abs(gmdi_handle_get_result(handle) - 4.0/3) >= 1e-7)
+    if (fabs(gmdi_handle_get_result(handle) - 4.0/3) >= 1e-7)
     {
         puts("Test failed");
         ret = 1;
