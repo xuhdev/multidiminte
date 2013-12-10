@@ -20,6 +20,10 @@ This project is based on [cmake][] build system. First install cmake and GSL. Th
     cmake ..
     make && make install
 
+## Report Bugs
+
+If you find any bugs, you can report them on the [issue tracker][] by [filing a new issue][].
+
 ## License
 
 Copyright (C) 2013 Hong Xu
@@ -38,6 +42,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-[cmake]: http://www.cmake.org
 [Cuba]: http://www.feynarts.de/cuba/
 [GSLMC]: http://www.gnu.org/software/gsl/manual/html_node/Monte-Carlo-Integration.html
+[cmake]: http://www.cmake.org
+[filing a new issue]: https://github.com/xuhdev/multidiminte/issues/new
+[issue tracker]: https://github.com/xuhdev/multidiminte/issues
