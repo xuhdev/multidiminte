@@ -240,4 +240,18 @@ double gmdi_handle_get_result(gmdi_inte_handle handle);
  */
 double gmdi_handle_get_abserr(gmdi_inte_handle handle);
 
+/*!
+ * \brief Obtain the version number of the library currently in use. You can pass in a NULL pointer if you do not need a
+ * specific version number.
+ *
+ * \param major Major version number.
+ *
+ * \param minor Minor version number.
+ *
+ * \param subminor Subminor version number
+ *
+ * \return None.
+ */
+void gmdi_get_version(int * major, int * minor, int * subminor);
+
 #endif /* GMDI_H_ */

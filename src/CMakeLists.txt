@@ -1,6 +1,14 @@
 find_package (GSL REQUIRED)
 include_directories (${GSL_INCLUDE_DIRS})
 
+# config.h
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
+    ${CMAKE_CURRENT_BINARY_DIR}/auto/config.h)
+
+# config.h will be generated in src/auto, we should include it.
+include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR}/auto)
+
 set (multidiminte_LIBSRCS multi_dim_inte.c handle.c)
 
 # shared library

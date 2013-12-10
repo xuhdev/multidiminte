@@ -24,6 +24,7 @@
  * Remember call_integration_func evaluates recursively. Then it evaluates f_0, and multiply them.
  */
 
+#include "config.h"
 #include <stdio.h>
 #include <string.h>
 #include <gsl/gsl_integration.h>
@@ -167,3 +168,15 @@ int gmdi_multi_dimensional_integration(gmdi_inte_handle handle)
     return ret;
 }
 
+/*
+ * Get the version number of the library.
+ */
+void gmdi_get_version(int * major, int * minor, int * subminor)
+{
+    if (major != NULL)
+        *major = MULTIDIMINTE_VERSION_MAJOR;
+    if (minor != NULL)
+        *minor = MULTIDIMINTE_VERSION_MINOR;
+    if (major != NULL)
+        *subminor = MULTIDIMINTE_VERSION_SUBMINOR;
+}

@@ -4,6 +4,7 @@ project (multidiminte)
 set (multidiminte_VERSION_MAJOR 0)
 set (multidiminte_VERSION_MINOR 0)
 set (multidiminte_VERSION_SUBMINOR 90)
+set (multidiminte_VERSION_SUFFIX -alpha)
 
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMake_Modules")
 
