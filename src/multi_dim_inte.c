@@ -27,6 +27,7 @@
 #include "config.h"
 #include <stdio.h>
 #include <string.h>
+#include <gsl/gsl_errno.h>
 #include <gsl/gsl_integration.h>
 #include "gmdi.h"
 #include "gmdi_structs.h"
@@ -95,6 +96,9 @@ static int call_integration_func(gmdi_multi_dim_inte_param* params)
                 params->intern.results + params->intern.dim,
                 params->intern.abserrs + params->intern.dim);
         break;
+
+    default: /* No proper inte_func is found */
+        GSL_ERROR("Invalid inte_func is specified", GSL_EINVAL);
     }
 
     return ret;
