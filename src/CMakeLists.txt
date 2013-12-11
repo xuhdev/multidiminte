@@ -1,3 +1,5 @@
+# Copyright (c) 2013 Hong Xu
+
 find_package (GSL REQUIRED)
 include_directories (${GSL_INCLUDE_DIRS})
 

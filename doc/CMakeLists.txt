@@ -1,3 +1,5 @@
+# Copyright (c) 2013 Hong Xu
+
 # Generate documentation
 
 find_package(Doxygen)
