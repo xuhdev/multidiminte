@@ -39,7 +39,6 @@ static int test_1(void)
     gmdi_inte_handle            handle = gmdi_create_inte_handle(2);
     gmdi_function_or_constant   fc;
     gmdi_multi_var_function     mvf;
-    double                      result;
     int                         ret = 0;
 
     gmdi_handle_set_key(handle, GSL_INTEG_GAUSS61, 0);
@@ -113,6 +112,8 @@ static double test_2_x1(const double* x, size_t n, void * p)
 
 /*
  * \int_0^2 dy \int_0^y dx x^2
+ *
+ * test the case in which the limits of the inner integral is a function of the outer variable
  */
 static int test_2(void)
 {
@@ -184,6 +185,8 @@ static double test_3_x1(const double* x, size_t n, void * p)
 
 /*
  * \int_1^3 dz \int_0^2 dy \int_0^y dx x^2
+ *
+ * test 3 dimensional case
  */
 static int test_3(void)
 {
@@ -248,7 +251,97 @@ static int test_3(void)
     return ret;
 }
 
+
+static double test_4_f(const double* x, size_t n, void* p)
+{
+    return x[0] * x[1];
+}
+
+/*
+ * \int_0^2 dy \int_0^1 dx xy
+ *
+ * Using gsl_integration_qag and gsl_integration_qng
+ * The kernel function involves both x and y
+ */
+static int test_4(void)
+{
+    gmdi_inte_handle            handle = gmdi_create_inte_handle(2);
+    gmdi_function_or_constant   fc;
+    gmdi_multi_var_function     mvf;
+    int                         ret = 0;
+
+    gmdi_handle_set_key(handle, GSL_INTEG_GAUSS61, 0);
+    gmdi_handle_set_key(handle, GSL_INTEG_GAUSS61, 1);
+    gmdi_handle_set_epsabs(handle, 0, 0);
+    gmdi_handle_set_epsabs(handle, 0, 1);
+    gmdi_handle_set_epsrel(handle, 1e-7, 0);
+    gmdi_handle_set_epsrel(handle, 1e-7, 1);
+    gmdi_handle_set_limit(handle, 100000, 0);
+    gmdi_handle_set_limit(handle, 100000, 1);
+    gmdi_handle_set_inte_func(handle, GMDI_INTE_FUNCTIONS_QAG, 0);
+    gmdi_handle_set_inte_func(handle, GMDI_INTE_FUNCTIONS_QAG, 1);
+
+    fc.type = GMDI_FUNCTION_OR_CONSTANT_TYPE_CONSTANT;
+    fc.content.c = 0;
+    gmdi_handle_set_x0(handle, &fc, 0);
+    gmdi_handle_set_x0(handle, &fc, 1);
+
+    fc.content.c = 1;
+    gmdi_handle_set_x1(handle, &fc, 1);
+
+    fc.content.c = 2;
+    gmdi_handle_set_x1(handle, &fc, 0);
+
+    mvf.n = 1;
+    mvf.function = test_4_f;
+    mvf.params = NULL;
+    gmdi_handle_set_kernel(handle, &mvf);
+
+    puts("test_4: \\int_0^2 dy \\int_0^1 dx xy");
+    puts("The result should be 1");
+
+    gmdi_multi_dimensional_integration(handle);
+    puts("Method: gsl_integration_qag");
+    printf("result: %e\n", gmdi_handle_get_result(handle));
+    printf("abserr: %e\n", gmdi_handle_get_abserr(handle));
+    if (fabs(gmdi_handle_get_result(handle) - 1.0) >= 1e-7)
+    {
+        puts("Test failed");
+        ret = 1;
+    }
+    else
+        puts("Test passed");
+
+    gmdi_handle_set_inte_func(handle, GMDI_INTE_FUNCTIONS_QAG, 0);
+    gmdi_handle_set_inte_func(handle, GMDI_INTE_FUNCTIONS_QAG, 1);
+
+    gmdi_multi_dimensional_integration(handle);
+    puts("Method: gsl_integration_qng");
+    printf("result: %e\n", gmdi_handle_get_result(handle));
+    printf("abserr: %e\n", gmdi_handle_get_abserr(handle));
+    if (fabs(gmdi_handle_get_result(handle) - 1.0) >= 1e-7)
+    {
+        puts("Test failed");
+        ret = 1;
+    }
+    else
+        puts("Test passed");
+
+    puts("");
+
+    gmdi_free_inte_handle(handle);
+
+    return ret;
+}
+
 int main(int argc, const char *argv[])
 {
-    return test_1() || test_2() || test_3();
+    int         ret = 0;
+
+    ret = ret || test_1();
+    ret = ret || test_2();
+    ret = ret || test_3();
+    ret = ret || test_4();
+
+    return ret;
 }
